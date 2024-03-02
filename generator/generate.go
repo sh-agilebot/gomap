@@ -2,7 +2,7 @@ package main
 
 import (
 	"bytes"
-	"io/ioutil"
+	"os"
 	"strings"
 	"text/template"
 )
@@ -30,12 +30,12 @@ func main() {
 		"float64",
 		"string",
 	}
-	header, err := ioutil.ReadFile("header")
+	header, err := os.ReadFile("header")
 	if err != nil {
 		panic(err)
 	}
 	{
-		content, err := ioutil.ReadFile("type.tmpl")
+		content, err := os.ReadFile("type.tmpl")
 		if err != nil {
 			panic(err)
 		}
@@ -54,11 +54,11 @@ func main() {
 			buffer.Write(result.Bytes())
 			buffer.WriteByte('\n')
 		}
-		ioutil.WriteFile("../types.go", buffer.Bytes(), 0644)
+		os.WriteFile("../types.go", buffer.Bytes(), 0644)
 
 	}
 	{
-		content, err := ioutil.ReadFile("slice.tmpl")
+		content, err := os.ReadFile("slice.tmpl")
 		if err != nil {
 			panic(err)
 		}
@@ -77,7 +77,7 @@ func main() {
 			buffer.Write(result.Bytes())
 			buffer.WriteByte('\n')
 		}
-		ioutil.WriteFile("../slices.go", buffer.Bytes(), 0644)
+		os.WriteFile("../slices.go", buffer.Bytes(), 0644)
 	}
 
 }

@@ -17,6 +17,8 @@ func (elt *Element) BoolSlice(defaultValue ...[]bool) ([]bool, error) {
 		return *def, nil
 	}
 	switch v := elt.Value.(type) {
+	case []bool:
+		return v, nil
 	case []interface{}:
 		return boolCastInterfaceType(v, def)
 	case GSlice:
@@ -73,6 +75,8 @@ func (elt *Element) IntSlice(defaultValue ...[]int) ([]int, error) {
 		return *def, nil
 	}
 	switch v := elt.Value.(type) {
+	case []int:
+		return v, nil
 	case []interface{}:
 		return intCastInterfaceType(v, def)
 	case GSlice:
@@ -129,6 +133,8 @@ func (elt *Element) Int8Slice(defaultValue ...[]int8) ([]int8, error) {
 		return *def, nil
 	}
 	switch v := elt.Value.(type) {
+	case []int8:
+		return v, nil
 	case []interface{}:
 		return int8CastInterfaceType(v, def)
 	case GSlice:
@@ -185,6 +191,8 @@ func (elt *Element) Int16Slice(defaultValue ...[]int16) ([]int16, error) {
 		return *def, nil
 	}
 	switch v := elt.Value.(type) {
+	case []int16:
+		return v, nil
 	case []interface{}:
 		return int16CastInterfaceType(v, def)
 	case GSlice:
@@ -241,6 +249,8 @@ func (elt *Element) Int32Slice(defaultValue ...[]int32) ([]int32, error) {
 		return *def, nil
 	}
 	switch v := elt.Value.(type) {
+	case []int32:
+		return v, nil
 	case []interface{}:
 		return int32CastInterfaceType(v, def)
 	case GSlice:
@@ -297,6 +307,8 @@ func (elt *Element) Int64Slice(defaultValue ...[]int64) ([]int64, error) {
 		return *def, nil
 	}
 	switch v := elt.Value.(type) {
+	case []int64:
+		return v, nil
 	case []interface{}:
 		return int64CastInterfaceType(v, def)
 	case GSlice:
@@ -353,6 +365,8 @@ func (elt *Element) Uint8Slice(defaultValue ...[]uint8) ([]uint8, error) {
 		return *def, nil
 	}
 	switch v := elt.Value.(type) {
+	case []uint8:
+		return v, nil
 	case []interface{}:
 		return uint8CastInterfaceType(v, def)
 	case GSlice:
@@ -409,6 +423,8 @@ func (elt *Element) Uint16Slice(defaultValue ...[]uint16) ([]uint16, error) {
 		return *def, nil
 	}
 	switch v := elt.Value.(type) {
+	case []uint16:
+		return v, nil
 	case []interface{}:
 		return uint16CastInterfaceType(v, def)
 	case GSlice:
@@ -465,6 +481,8 @@ func (elt *Element) Uint32Slice(defaultValue ...[]uint32) ([]uint32, error) {
 		return *def, nil
 	}
 	switch v := elt.Value.(type) {
+	case []uint32:
+		return v, nil
 	case []interface{}:
 		return uint32CastInterfaceType(v, def)
 	case GSlice:
@@ -521,6 +539,8 @@ func (elt *Element) Uint64Slice(defaultValue ...[]uint64) ([]uint64, error) {
 		return *def, nil
 	}
 	switch v := elt.Value.(type) {
+	case []uint64:
+		return v, nil
 	case []interface{}:
 		return uint64CastInterfaceType(v, def)
 	case GSlice:
@@ -577,6 +597,8 @@ func (elt *Element) Float32Slice(defaultValue ...[]float32) ([]float32, error) {
 		return *def, nil
 	}
 	switch v := elt.Value.(type) {
+	case []float32:
+		return v, nil
 	case []interface{}:
 		return float32CastInterfaceType(v, def)
 	case GSlice:
@@ -633,6 +655,8 @@ func (elt *Element) Float64Slice(defaultValue ...[]float64) ([]float64, error) {
 		return *def, nil
 	}
 	switch v := elt.Value.(type) {
+	case []float64:
+		return v, nil
 	case []interface{}:
 		return float64CastInterfaceType(v, def)
 	case GSlice:
@@ -689,6 +713,8 @@ func (elt *Element) StringSlice(defaultValue ...[]string) ([]string, error) {
 		return *def, nil
 	}
 	switch v := elt.Value.(type) {
+	case []string:
+		return v, nil
 	case []interface{}:
 		return stringCastInterfaceType(v, def)
 	case GSlice:
@@ -726,4 +752,28 @@ func stringCastGSliceType(list GSlice, def *[]string) ([]string, error) {
 		res = append(res, v)
 	}
 	return res, nil
+}
+
+// AnySlice cast element value into interface{}
+func (elt *Element) AnySlice(defaultValue ...[]interface{}) ([]interface{}, error) {
+	defValue := func() *[]interface{} {
+		if len(defaultValue) == 0 {
+			return nil
+		}
+		return &defaultValue[0]
+	}
+	def := defValue()
+	if elt.Value == nil {
+		if def == nil {
+			var v []interface{}
+			return v, NewWrongPathError(elt.Path)
+		}
+		return *def, nil
+	}
+	switch v := elt.Value.(type) {
+	case []interface{}:
+		return v, nil
+	default:
+		return nil, NewWrongTypeError("[]interface{}", elt.Value)
+	}
 }

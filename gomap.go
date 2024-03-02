@@ -3,7 +3,9 @@
 // The package is really simple to use
 package gomap
 
-import "encoding/json"
+import (
+	"encoding/json"
+)
 
 // GMap overload map with utility functions
 type GMap map[string]interface{}
@@ -77,7 +79,7 @@ func (m GMap) ToJSON() ([]byte, error) {
 	return json.Marshal(m)
 }
 
-// FromJSON laod json content into a GMap
+// FromJSON load json content into a GMap
 func (m GMap) FromJSON(content []byte) error {
 	return json.Unmarshal(content, &m)
 }

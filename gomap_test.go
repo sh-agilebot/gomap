@@ -6,13 +6,14 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestGoMapTypes(t *testing.T) {
+func TestGMap_Basic(t *testing.T) {
 	rm := map[string]interface{}{
 		"v1": 1,
 		"elt": map[string]interface{}{
 			"v2": 2,
 		},
 		"vs": "test",
+		"vb": true,
 	}
 	m := GMap(rm)
 	v, err := m.Get("v1").Int(42)
@@ -44,15 +45,24 @@ func TestGoMapTypes(t *testing.T) {
 	assert.Error(t, err)
 	assert.Equal(t, "Wrong path vs2", err.Error())
 	assert.Equal(t, "", vs)
+
+	vb, err := m.Get("vb").Bool()
+	assert.NoError(t, err)
+	assert.Equal(t, true, vb)
 }
 
-func TestGoSlices(t *testing.T) {
+func TestGMap_Slices(t *testing.T) {
 	m := GMap{
 		"v1": GSlice{1, 2},
 		"elt": GMap{
 			"v2": GSlice{int64(2), int64(3)},
 		},
-		"vs": GSlice{"test", "test2"},
+		"vs":    GSlice{"test", "test2"},
+		"vui8":  []uint8("uint8"),
+		"vui16": []uint16{1},
+		"vui32": []uint32{1},
+		"vui64": []uint64{1},
+		"vb":    []bool{true},
 	}
 	v, err := m.Get("v1").IntSlice([]int{42})
 	assert.NoError(t, err)
@@ -60,11 +70,11 @@ func TestGoSlices(t *testing.T) {
 
 	v64, err := m.Get("elt", "v2").Int64Slice([]int64{42})
 	assert.NoError(t, err)
-	assert.EqualValues(t, []int64{2, 3}, v64)
+	assert.Equal(t, []int64{2, 3}, v64)
 
 	v, err = m.Get("elt", "v2").IntSlice([]int{42})
 	assert.NoError(t, err)
-	assert.EqualValues(t, []int{42}, v)
+	assert.Equal(t, []int{42}, v)
 
 	v, err = m.Get("elt", "v2").IntSlice()
 	assert.Error(t, err)
@@ -72,10 +82,30 @@ func TestGoSlices(t *testing.T) {
 
 	vs, err := m.Get("vs").StringSlice()
 	assert.NoError(t, err)
-	assert.EqualValues(t, []string{"test", "test2"}, vs)
+	assert.Equal(t, []string{"test", "test2"}, vs)
+
+	vui8, err := m.Get("vui8").Uint8Slice()
+	assert.NoError(t, err)
+	assert.Equal(t, []uint8("uint8"), vui8)
+
+	vui16, err := m.Get("vui16").Uint16Slice()
+	assert.NoError(t, err)
+	assert.Equal(t, []uint16{1}, vui16)
+
+	vui32, err := m.Get("vui32").Uint32Slice()
+	assert.NoError(t, err)
+	assert.Equal(t, []uint32{1}, vui32)
+
+	vui64, err := m.Get("vui64").Uint64Slice()
+	assert.NoError(t, err)
+	assert.Equal(t, []uint64{1}, vui64)
+
+	vb, err := m.Get("vb").BoolSlice()
+	assert.NoError(t, err)
+	assert.Equal(t, []bool{true}, vb)
 }
 
-func TestGoMapStruct(t *testing.T) {
+func TestGMap_Struct(t *testing.T) {
 	type Elt struct {
 		V2 int `json:"v2,omitempty"`
 	}
