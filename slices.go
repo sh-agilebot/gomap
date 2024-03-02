@@ -1,6 +1,6 @@
 package gomap
 
-//BoolSlice cast element value into bool
+// BoolSlice cast element value into bool
 func (elt *Element) BoolSlice(defaultValue ...[]bool) ([]bool, error) {
 	defValue := func() *[]bool {
 		if len(defaultValue) == 0 {
@@ -26,12 +26,12 @@ func (elt *Element) BoolSlice(defaultValue ...[]bool) ([]bool, error) {
 	}
 }
 
-func boolCastInterfaceType(list []interface{}, def *[]bool) ([]bool, error){
+func boolCastInterfaceType(list []interface{}, def *[]bool) ([]bool, error) {
 	var res []bool
-	for _, e := range list{
+	for _, e := range list {
 		v, ok := e.(bool)
 		if !ok {
-			if def == nil{
+			if def == nil {
 				return nil, NewWrongTypeError("bool", e)
 			}
 			return *def, nil
@@ -41,12 +41,12 @@ func boolCastInterfaceType(list []interface{}, def *[]bool) ([]bool, error){
 	return res, nil
 }
 
-func boolCastGSliceType(list GSlice, def *[]bool) ([]bool, error){
+func boolCastGSliceType(list GSlice, def *[]bool) ([]bool, error) {
 	var res []bool
-	for _, e := range list{
+	for _, e := range list {
 		v, ok := e.(bool)
 		if !ok {
-			if def == nil{
+			if def == nil {
 				return nil, NewWrongTypeError("bool", e)
 			}
 			return *def, nil
@@ -56,7 +56,7 @@ func boolCastGSliceType(list GSlice, def *[]bool) ([]bool, error){
 	return res, nil
 }
 
-//IntSlice cast element value into int
+// IntSlice cast element value into int
 func (elt *Element) IntSlice(defaultValue ...[]int) ([]int, error) {
 	defValue := func() *[]int {
 		if len(defaultValue) == 0 {
@@ -82,12 +82,12 @@ func (elt *Element) IntSlice(defaultValue ...[]int) ([]int, error) {
 	}
 }
 
-func intCastInterfaceType(list []interface{}, def *[]int) ([]int, error){
+func intCastInterfaceType(list []interface{}, def *[]int) ([]int, error) {
 	var res []int
-	for _, e := range list{
+	for _, e := range list {
 		v, ok := e.(int)
 		if !ok {
-			if def == nil{
+			if def == nil {
 				return nil, NewWrongTypeError("int", e)
 			}
 			return *def, nil
@@ -97,12 +97,12 @@ func intCastInterfaceType(list []interface{}, def *[]int) ([]int, error){
 	return res, nil
 }
 
-func intCastGSliceType(list GSlice, def *[]int) ([]int, error){
+func intCastGSliceType(list GSlice, def *[]int) ([]int, error) {
 	var res []int
-	for _, e := range list{
+	for _, e := range list {
 		v, ok := e.(int)
 		if !ok {
-			if def == nil{
+			if def == nil {
 				return nil, NewWrongTypeError("int", e)
 			}
 			return *def, nil
@@ -112,7 +112,7 @@ func intCastGSliceType(list GSlice, def *[]int) ([]int, error){
 	return res, nil
 }
 
-//Int8Slice cast element value into int8
+// Int8Slice cast element value into int8
 func (elt *Element) Int8Slice(defaultValue ...[]int8) ([]int8, error) {
 	defValue := func() *[]int8 {
 		if len(defaultValue) == 0 {
@@ -138,12 +138,12 @@ func (elt *Element) Int8Slice(defaultValue ...[]int8) ([]int8, error) {
 	}
 }
 
-func int8CastInterfaceType(list []interface{}, def *[]int8) ([]int8, error){
+func int8CastInterfaceType(list []interface{}, def *[]int8) ([]int8, error) {
 	var res []int8
-	for _, e := range list{
+	for _, e := range list {
 		v, ok := e.(int8)
 		if !ok {
-			if def == nil{
+			if def == nil {
 				return nil, NewWrongTypeError("int8", e)
 			}
 			return *def, nil
@@ -153,12 +153,12 @@ func int8CastInterfaceType(list []interface{}, def *[]int8) ([]int8, error){
 	return res, nil
 }
 
-func int8CastGSliceType(list GSlice, def *[]int8) ([]int8, error){
+func int8CastGSliceType(list GSlice, def *[]int8) ([]int8, error) {
 	var res []int8
-	for _, e := range list{
+	for _, e := range list {
 		v, ok := e.(int8)
 		if !ok {
-			if def == nil{
+			if def == nil {
 				return nil, NewWrongTypeError("int8", e)
 			}
 			return *def, nil
@@ -168,7 +168,7 @@ func int8CastGSliceType(list GSlice, def *[]int8) ([]int8, error){
 	return res, nil
 }
 
-//Int16Slice cast element value into int16
+// Int16Slice cast element value into int16
 func (elt *Element) Int16Slice(defaultValue ...[]int16) ([]int16, error) {
 	defValue := func() *[]int16 {
 		if len(defaultValue) == 0 {
@@ -194,12 +194,12 @@ func (elt *Element) Int16Slice(defaultValue ...[]int16) ([]int16, error) {
 	}
 }
 
-func int16CastInterfaceType(list []interface{}, def *[]int16) ([]int16, error){
+func int16CastInterfaceType(list []interface{}, def *[]int16) ([]int16, error) {
 	var res []int16
-	for _, e := range list{
+	for _, e := range list {
 		v, ok := e.(int16)
 		if !ok {
-			if def == nil{
+			if def == nil {
 				return nil, NewWrongTypeError("int16", e)
 			}
 			return *def, nil
@@ -209,12 +209,12 @@ func int16CastInterfaceType(list []interface{}, def *[]int16) ([]int16, error){
 	return res, nil
 }
 
-func int16CastGSliceType(list GSlice, def *[]int16) ([]int16, error){
+func int16CastGSliceType(list GSlice, def *[]int16) ([]int16, error) {
 	var res []int16
-	for _, e := range list{
+	for _, e := range list {
 		v, ok := e.(int16)
 		if !ok {
-			if def == nil{
+			if def == nil {
 				return nil, NewWrongTypeError("int16", e)
 			}
 			return *def, nil
@@ -224,7 +224,7 @@ func int16CastGSliceType(list GSlice, def *[]int16) ([]int16, error){
 	return res, nil
 }
 
-//Int32Slice cast element value into int32
+// Int32Slice cast element value into int32
 func (elt *Element) Int32Slice(defaultValue ...[]int32) ([]int32, error) {
 	defValue := func() *[]int32 {
 		if len(defaultValue) == 0 {
@@ -250,12 +250,12 @@ func (elt *Element) Int32Slice(defaultValue ...[]int32) ([]int32, error) {
 	}
 }
 
-func int32CastInterfaceType(list []interface{}, def *[]int32) ([]int32, error){
+func int32CastInterfaceType(list []interface{}, def *[]int32) ([]int32, error) {
 	var res []int32
-	for _, e := range list{
+	for _, e := range list {
 		v, ok := e.(int32)
 		if !ok {
-			if def == nil{
+			if def == nil {
 				return nil, NewWrongTypeError("int32", e)
 			}
 			return *def, nil
@@ -265,12 +265,12 @@ func int32CastInterfaceType(list []interface{}, def *[]int32) ([]int32, error){
 	return res, nil
 }
 
-func int32CastGSliceType(list GSlice, def *[]int32) ([]int32, error){
+func int32CastGSliceType(list GSlice, def *[]int32) ([]int32, error) {
 	var res []int32
-	for _, e := range list{
+	for _, e := range list {
 		v, ok := e.(int32)
 		if !ok {
-			if def == nil{
+			if def == nil {
 				return nil, NewWrongTypeError("int32", e)
 			}
 			return *def, nil
@@ -280,7 +280,7 @@ func int32CastGSliceType(list GSlice, def *[]int32) ([]int32, error){
 	return res, nil
 }
 
-//Int64Slice cast element value into int64
+// Int64Slice cast element value into int64
 func (elt *Element) Int64Slice(defaultValue ...[]int64) ([]int64, error) {
 	defValue := func() *[]int64 {
 		if len(defaultValue) == 0 {
@@ -306,12 +306,12 @@ func (elt *Element) Int64Slice(defaultValue ...[]int64) ([]int64, error) {
 	}
 }
 
-func int64CastInterfaceType(list []interface{}, def *[]int64) ([]int64, error){
+func int64CastInterfaceType(list []interface{}, def *[]int64) ([]int64, error) {
 	var res []int64
-	for _, e := range list{
+	for _, e := range list {
 		v, ok := e.(int64)
 		if !ok {
-			if def == nil{
+			if def == nil {
 				return nil, NewWrongTypeError("int64", e)
 			}
 			return *def, nil
@@ -321,12 +321,12 @@ func int64CastInterfaceType(list []interface{}, def *[]int64) ([]int64, error){
 	return res, nil
 }
 
-func int64CastGSliceType(list GSlice, def *[]int64) ([]int64, error){
+func int64CastGSliceType(list GSlice, def *[]int64) ([]int64, error) {
 	var res []int64
-	for _, e := range list{
+	for _, e := range list {
 		v, ok := e.(int64)
 		if !ok {
-			if def == nil{
+			if def == nil {
 				return nil, NewWrongTypeError("int64", e)
 			}
 			return *def, nil
@@ -336,7 +336,7 @@ func int64CastGSliceType(list GSlice, def *[]int64) ([]int64, error){
 	return res, nil
 }
 
-//Uint8Slice cast element value into uint8
+// Uint8Slice cast element value into uint8
 func (elt *Element) Uint8Slice(defaultValue ...[]uint8) ([]uint8, error) {
 	defValue := func() *[]uint8 {
 		if len(defaultValue) == 0 {
@@ -362,12 +362,12 @@ func (elt *Element) Uint8Slice(defaultValue ...[]uint8) ([]uint8, error) {
 	}
 }
 
-func uint8CastInterfaceType(list []interface{}, def *[]uint8) ([]uint8, error){
+func uint8CastInterfaceType(list []interface{}, def *[]uint8) ([]uint8, error) {
 	var res []uint8
-	for _, e := range list{
+	for _, e := range list {
 		v, ok := e.(uint8)
 		if !ok {
-			if def == nil{
+			if def == nil {
 				return nil, NewWrongTypeError("uint8", e)
 			}
 			return *def, nil
@@ -377,12 +377,12 @@ func uint8CastInterfaceType(list []interface{}, def *[]uint8) ([]uint8, error){
 	return res, nil
 }
 
-func uint8CastGSliceType(list GSlice, def *[]uint8) ([]uint8, error){
+func uint8CastGSliceType(list GSlice, def *[]uint8) ([]uint8, error) {
 	var res []uint8
-	for _, e := range list{
+	for _, e := range list {
 		v, ok := e.(uint8)
 		if !ok {
-			if def == nil{
+			if def == nil {
 				return nil, NewWrongTypeError("uint8", e)
 			}
 			return *def, nil
@@ -392,7 +392,7 @@ func uint8CastGSliceType(list GSlice, def *[]uint8) ([]uint8, error){
 	return res, nil
 }
 
-//Uint16Slice cast element value into uint16
+// Uint16Slice cast element value into uint16
 func (elt *Element) Uint16Slice(defaultValue ...[]uint16) ([]uint16, error) {
 	defValue := func() *[]uint16 {
 		if len(defaultValue) == 0 {
@@ -418,12 +418,12 @@ func (elt *Element) Uint16Slice(defaultValue ...[]uint16) ([]uint16, error) {
 	}
 }
 
-func uint16CastInterfaceType(list []interface{}, def *[]uint16) ([]uint16, error){
+func uint16CastInterfaceType(list []interface{}, def *[]uint16) ([]uint16, error) {
 	var res []uint16
-	for _, e := range list{
+	for _, e := range list {
 		v, ok := e.(uint16)
 		if !ok {
-			if def == nil{
+			if def == nil {
 				return nil, NewWrongTypeError("uint16", e)
 			}
 			return *def, nil
@@ -433,12 +433,12 @@ func uint16CastInterfaceType(list []interface{}, def *[]uint16) ([]uint16, error
 	return res, nil
 }
 
-func uint16CastGSliceType(list GSlice, def *[]uint16) ([]uint16, error){
+func uint16CastGSliceType(list GSlice, def *[]uint16) ([]uint16, error) {
 	var res []uint16
-	for _, e := range list{
+	for _, e := range list {
 		v, ok := e.(uint16)
 		if !ok {
-			if def == nil{
+			if def == nil {
 				return nil, NewWrongTypeError("uint16", e)
 			}
 			return *def, nil
@@ -448,7 +448,7 @@ func uint16CastGSliceType(list GSlice, def *[]uint16) ([]uint16, error){
 	return res, nil
 }
 
-//Uint32Slice cast element value into uint32
+// Uint32Slice cast element value into uint32
 func (elt *Element) Uint32Slice(defaultValue ...[]uint32) ([]uint32, error) {
 	defValue := func() *[]uint32 {
 		if len(defaultValue) == 0 {
@@ -474,12 +474,12 @@ func (elt *Element) Uint32Slice(defaultValue ...[]uint32) ([]uint32, error) {
 	}
 }
 
-func uint32CastInterfaceType(list []interface{}, def *[]uint32) ([]uint32, error){
+func uint32CastInterfaceType(list []interface{}, def *[]uint32) ([]uint32, error) {
 	var res []uint32
-	for _, e := range list{
+	for _, e := range list {
 		v, ok := e.(uint32)
 		if !ok {
-			if def == nil{
+			if def == nil {
 				return nil, NewWrongTypeError("uint32", e)
 			}
 			return *def, nil
@@ -489,12 +489,12 @@ func uint32CastInterfaceType(list []interface{}, def *[]uint32) ([]uint32, error
 	return res, nil
 }
 
-func uint32CastGSliceType(list GSlice, def *[]uint32) ([]uint32, error){
+func uint32CastGSliceType(list GSlice, def *[]uint32) ([]uint32, error) {
 	var res []uint32
-	for _, e := range list{
+	for _, e := range list {
 		v, ok := e.(uint32)
 		if !ok {
-			if def == nil{
+			if def == nil {
 				return nil, NewWrongTypeError("uint32", e)
 			}
 			return *def, nil
@@ -504,7 +504,7 @@ func uint32CastGSliceType(list GSlice, def *[]uint32) ([]uint32, error){
 	return res, nil
 }
 
-//Uint64Slice cast element value into uint64
+// Uint64Slice cast element value into uint64
 func (elt *Element) Uint64Slice(defaultValue ...[]uint64) ([]uint64, error) {
 	defValue := func() *[]uint64 {
 		if len(defaultValue) == 0 {
@@ -530,12 +530,12 @@ func (elt *Element) Uint64Slice(defaultValue ...[]uint64) ([]uint64, error) {
 	}
 }
 
-func uint64CastInterfaceType(list []interface{}, def *[]uint64) ([]uint64, error){
+func uint64CastInterfaceType(list []interface{}, def *[]uint64) ([]uint64, error) {
 	var res []uint64
-	for _, e := range list{
+	for _, e := range list {
 		v, ok := e.(uint64)
 		if !ok {
-			if def == nil{
+			if def == nil {
 				return nil, NewWrongTypeError("uint64", e)
 			}
 			return *def, nil
@@ -545,12 +545,12 @@ func uint64CastInterfaceType(list []interface{}, def *[]uint64) ([]uint64, error
 	return res, nil
 }
 
-func uint64CastGSliceType(list GSlice, def *[]uint64) ([]uint64, error){
+func uint64CastGSliceType(list GSlice, def *[]uint64) ([]uint64, error) {
 	var res []uint64
-	for _, e := range list{
+	for _, e := range list {
 		v, ok := e.(uint64)
 		if !ok {
-			if def == nil{
+			if def == nil {
 				return nil, NewWrongTypeError("uint64", e)
 			}
 			return *def, nil
@@ -560,7 +560,7 @@ func uint64CastGSliceType(list GSlice, def *[]uint64) ([]uint64, error){
 	return res, nil
 }
 
-//Float32Slice cast element value into float32
+// Float32Slice cast element value into float32
 func (elt *Element) Float32Slice(defaultValue ...[]float32) ([]float32, error) {
 	defValue := func() *[]float32 {
 		if len(defaultValue) == 0 {
@@ -586,12 +586,12 @@ func (elt *Element) Float32Slice(defaultValue ...[]float32) ([]float32, error) {
 	}
 }
 
-func float32CastInterfaceType(list []interface{}, def *[]float32) ([]float32, error){
+func float32CastInterfaceType(list []interface{}, def *[]float32) ([]float32, error) {
 	var res []float32
-	for _, e := range list{
+	for _, e := range list {
 		v, ok := e.(float32)
 		if !ok {
-			if def == nil{
+			if def == nil {
 				return nil, NewWrongTypeError("float32", e)
 			}
 			return *def, nil
@@ -601,12 +601,12 @@ func float32CastInterfaceType(list []interface{}, def *[]float32) ([]float32, er
 	return res, nil
 }
 
-func float32CastGSliceType(list GSlice, def *[]float32) ([]float32, error){
+func float32CastGSliceType(list GSlice, def *[]float32) ([]float32, error) {
 	var res []float32
-	for _, e := range list{
+	for _, e := range list {
 		v, ok := e.(float32)
 		if !ok {
-			if def == nil{
+			if def == nil {
 				return nil, NewWrongTypeError("float32", e)
 			}
 			return *def, nil
@@ -616,7 +616,7 @@ func float32CastGSliceType(list GSlice, def *[]float32) ([]float32, error){
 	return res, nil
 }
 
-//Float64Slice cast element value into float64
+// Float64Slice cast element value into float64
 func (elt *Element) Float64Slice(defaultValue ...[]float64) ([]float64, error) {
 	defValue := func() *[]float64 {
 		if len(defaultValue) == 0 {
@@ -642,12 +642,12 @@ func (elt *Element) Float64Slice(defaultValue ...[]float64) ([]float64, error) {
 	}
 }
 
-func float64CastInterfaceType(list []interface{}, def *[]float64) ([]float64, error){
+func float64CastInterfaceType(list []interface{}, def *[]float64) ([]float64, error) {
 	var res []float64
-	for _, e := range list{
+	for _, e := range list {
 		v, ok := e.(float64)
 		if !ok {
-			if def == nil{
+			if def == nil {
 				return nil, NewWrongTypeError("float64", e)
 			}
 			return *def, nil
@@ -657,12 +657,12 @@ func float64CastInterfaceType(list []interface{}, def *[]float64) ([]float64, er
 	return res, nil
 }
 
-func float64CastGSliceType(list GSlice, def *[]float64) ([]float64, error){
+func float64CastGSliceType(list GSlice, def *[]float64) ([]float64, error) {
 	var res []float64
-	for _, e := range list{
+	for _, e := range list {
 		v, ok := e.(float64)
 		if !ok {
-			if def == nil{
+			if def == nil {
 				return nil, NewWrongTypeError("float64", e)
 			}
 			return *def, nil
@@ -672,7 +672,7 @@ func float64CastGSliceType(list GSlice, def *[]float64) ([]float64, error){
 	return res, nil
 }
 
-//StringSlice cast element value into string
+// StringSlice cast element value into string
 func (elt *Element) StringSlice(defaultValue ...[]string) ([]string, error) {
 	defValue := func() *[]string {
 		if len(defaultValue) == 0 {
@@ -698,12 +698,12 @@ func (elt *Element) StringSlice(defaultValue ...[]string) ([]string, error) {
 	}
 }
 
-func stringCastInterfaceType(list []interface{}, def *[]string) ([]string, error){
+func stringCastInterfaceType(list []interface{}, def *[]string) ([]string, error) {
 	var res []string
-	for _, e := range list{
+	for _, e := range list {
 		v, ok := e.(string)
 		if !ok {
-			if def == nil{
+			if def == nil {
 				return nil, NewWrongTypeError("string", e)
 			}
 			return *def, nil
@@ -713,12 +713,12 @@ func stringCastInterfaceType(list []interface{}, def *[]string) ([]string, error
 	return res, nil
 }
 
-func stringCastGSliceType(list GSlice, def *[]string) ([]string, error){
+func stringCastGSliceType(list GSlice, def *[]string) ([]string, error) {
 	var res []string
-	for _, e := range list{
+	for _, e := range list {
 		v, ok := e.(string)
 		if !ok {
-			if def == nil{
+			if def == nil {
 				return nil, NewWrongTypeError("string", e)
 			}
 			return *def, nil
@@ -727,4 +727,3 @@ func stringCastGSliceType(list GSlice, def *[]string) ([]string, error){
 	}
 	return res, nil
 }
-

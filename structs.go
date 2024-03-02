@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 )
 
-//Object read element as struct
+// Object read element as struct
 func (elt *Element) Object(obj interface{}) error {
 	if elt.Value == nil {
 		return NewWrongPathError(elt.Path)

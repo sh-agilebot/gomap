@@ -1,8 +1,5 @@
-module github.com/SebastienDorgan/gomap
+module github.com/sh-agilebot/gomap
 
-go 1.14
+go 1.18
 
-require (
-	github.com/stretchr/testify v1.5.1
-	golang.org/x/tools v0.0.0-20200403190813-44a64ad78b9b // indirect
-)
+require github.com/stretchr/testify v1.8.4

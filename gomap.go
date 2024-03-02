@@ -1,23 +1,23 @@
-//Package gomap implements utilities to manipulate generic maps and cast elements into native Go types and native Go structures
+// Package gomap implements utilities to manipulate generic maps and cast elements into native Go types and native Go structures
 //
 // The package is really simple to use
 package gomap
 
 import "encoding/json"
 
-//GMap overload map with utility functions
+// GMap overload map with utility functions
 type GMap map[string]interface{}
 
-//GSlice overload []interface{} to simplify GMap declarations
+// GSlice overload []interface{} to simplify GMap declarations
 type GSlice []interface{}
 
-//Element an element of the map
+// Element an element of the map
 type Element struct {
 	Path  []string
 	Value interface{}
 }
 
-//Get returns map elements along path
+// Get returns map elements along path
 func (m GMap) Get(path ...string) *Element {
 	if len(path) == 0 {
 		return &Element{
@@ -31,7 +31,7 @@ func (m GMap) Get(path ...string) *Element {
 	return element(m, path, path[0]).Get(path[1:]...)
 }
 
-//Get returns map elements along path
+// Get returns map elements along path
 func (elt *Element) Get(path ...string) *Element {
 	next := func(path ...string) *Element {
 		if elt.Value == nil {
@@ -72,12 +72,12 @@ func element(m GMap, path []string, key string) *Element {
 	}
 }
 
-//ToJSON marshal a gmap into json content
+// ToJSON marshal a gmap into json content
 func (m GMap) ToJSON() ([]byte, error) {
 	return json.Marshal(m)
 }
 
-//FromJSON laod json content into a GMap
+// FromJSON laod json content into a GMap
 func (m GMap) FromJSON(content []byte) error {
 	return json.Unmarshal(content, &m)
 }
