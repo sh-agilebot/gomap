@@ -777,3 +777,44 @@ func (elt *Element) AnySlice(defaultValue ...[]interface{}) ([]interface{}, erro
 		return nil, NewWrongTypeError("[]interface{}", elt.Value)
 	}
 }
+
+// StringAnyMapSlice cast element value into map[string]interface{}
+func (elt *Element) StringAnyMapSlice(defaultValue ...[]map[string]interface{}) ([]map[string]interface{}, error) {
+	defValue := func() *[]map[string]interface{} {
+		if len(defaultValue) == 0 {
+			return nil
+		}
+		return &defaultValue[0]
+	}
+	def := defValue()
+	if elt.Value == nil {
+		if def == nil {
+			var v []map[string]interface{}
+			return v, NewWrongPathError(elt.Path)
+		}
+		return *def, nil
+	}
+	switch v := elt.Value.(type) {
+	case []map[string]interface{}:
+		return v, nil
+	case []interface{}:
+		return stringAnyMapCastInterfaceType(v, def)
+	default:
+		return nil, NewWrongTypeError("[]map[string]interface{}", elt.Value)
+	}
+}
+
+func stringAnyMapCastInterfaceType(list []interface{}, def *[]map[string]interface{}) ([]map[string]interface{}, error) {
+	var res []map[string]interface{}
+	for _, e := range list {
+		v, ok := e.(map[string]interface{})
+		if !ok {
+			if def == nil {
+				return nil, NewWrongTypeError("map[string]interface{}", e)
+			}
+			return *def, nil
+		}
+		res = append(res, v)
+	}
+	return res, nil
+}

@@ -63,6 +63,12 @@ func TestGMap_Slices(t *testing.T) {
 		"vui32": []uint32{1},
 		"vui64": []uint64{1},
 		"vb":    []bool{true},
+		"vsm": []map[string]interface{}{
+			{
+				"key1": 1,
+				"key2": "2",
+			},
+		},
 	}
 	v, err := m.Get("v1").IntSlice([]int{42})
 	assert.NoError(t, err)
@@ -103,6 +109,15 @@ func TestGMap_Slices(t *testing.T) {
 	vb, err := m.Get("vb").BoolSlice()
 	assert.NoError(t, err)
 	assert.Equal(t, []bool{true}, vb)
+
+	vsm, err := m.Get("vsm").StringMapSlice()
+	assert.NoError(t, err)
+	assert.Equal(t, []map[string]interface{}{
+		{
+			"key1": 1,
+			"key2": "2",
+		},
+	}, vsm)
 }
 
 func TestGMap_Struct(t *testing.T) {
