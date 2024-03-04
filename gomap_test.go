@@ -16,6 +16,19 @@ func TestGMap_Basic(t *testing.T) {
 		"vb": true,
 	}
 	m := GMap(rm)
+
+	has := m.Has("v1")
+	assert.True(t, has)
+
+	has = m.Has("v2")
+	assert.False(t, has)
+
+	has = m.Has("elt", "v2")
+	assert.True(t, has)
+
+	has = m.Has("elt", "v3")
+	assert.False(t, has)
+
 	v, err := m.Get("v1").Int(42)
 	assert.NoError(t, err)
 	assert.Equal(t, 1, v)
@@ -110,7 +123,7 @@ func TestGMap_Slices(t *testing.T) {
 	assert.NoError(t, err)
 	assert.Equal(t, []bool{true}, vb)
 
-	vsm, err := m.Get("vsm").StringMapSlice()
+	vsm, err := m.Get("vsm").StringAnyMapSlice()
 	assert.NoError(t, err)
 	assert.Equal(t, []map[string]interface{}{
 		{

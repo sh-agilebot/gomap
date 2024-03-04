@@ -33,6 +33,17 @@ func (m GMap) Get(path ...string) *Element {
 	return element(m, path, path[0]).Get(path[1:]...)
 }
 
+// Has returns if map has element on along path
+func (m GMap) Has(path ...string) bool {
+	if len(path) == 0 {
+		return false
+	}
+	if len(path) == 1 {
+		return element(m, path, path[0]).has()
+	}
+	return element(m, path, path[0]).Get(path[1:]...).has()
+}
+
 // Get returns map elements along path
 func (elt *Element) Get(path ...string) *Element {
 	next := func(path ...string) *Element {
@@ -60,6 +71,10 @@ func (elt *Element) Get(path ...string) *Element {
 		return next(path...)
 	}
 	return next(path...).Get(path[1:]...)
+}
+
+func (elt *Element) has() bool {
+	return elt.Value != nil
 }
 
 func element(m GMap, path []string, key string) *Element {
