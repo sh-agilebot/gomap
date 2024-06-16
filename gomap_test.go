@@ -14,6 +14,7 @@ func TestGMap_Basic(t *testing.T) {
 		},
 		"vs": "test",
 		"vb": true,
+		"vf": float64(1.0),
 	}
 	m := GMap(rm)
 
@@ -62,6 +63,14 @@ func TestGMap_Basic(t *testing.T) {
 	vb, err := m.Get("vb").Bool()
 	assert.NoError(t, err)
 	assert.Equal(t, true, vb)
+
+	vf, err := m.Get("vf").Float64()
+	assert.NoError(t, err)
+	assert.Equal(t, 1.0, vf)
+
+	vfi, err := m.Get("vf").Uint32()
+	assert.NoError(t, err)
+	assert.Equal(t, uint32(1), vfi)
 }
 
 func TestGMap_Slices(t *testing.T) {
